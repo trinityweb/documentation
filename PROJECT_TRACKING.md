@@ -1,0 +1,371 @@
+# 📊 MARKETPLACE MULTI-TENANT - TRACKING DE PROYECTO
+
+## 🎯 Overview del Proyecto
+
+**Objetivo**: Implementar capacidades marketplace sobre arquitectura SaaS multi-tenant existente  
+**Duración Total**: 17 semanas  
+**Inicio**: [FECHA_INICIO]  
+**Fin Estimado**: [FECHA_FIN]  
+
+### 📈 Métricas Generales de Avance
+
+| Métrica | Progreso | Target |
+|---------|----------|--------|
+| **Épicas Completadas** | 0/7 (0%) | 7/7 (100%) |
+| **Tareas Completadas** | 0/145 (0%) | 145/145 (100%) |
+| **Archivos Implementados** | 0/96+ (0%) | 96+/96+ (100%) |
+| **Migraciones Aplicadas** | 0/18 (0%) | 18/18 (100%) |
+| **Tests E2E Pasando** | 0/12 (0%) | 12/12 (100%) |
+
+---
+
+## 🏗️ ÉPICAS Y ESTADOS
+
+### 📊 Vista Resumen de Épicas
+
+| Épica | Estado | Progreso | Inicio | Fin | Responsable |
+|-------|--------|----------|--------|-----|-------------|
+| **FASE 1: Taxonomía Global** | ⏳ Planificado | 0/32 (0%) | - | - | Backend Team |
+| **FASE 2: Onboarding Inteligente** | ⏳ Planificado | 0/23 (0%) | - | - | Full Stack Team |
+| **FASE 3: Motor de Búsqueda** | ⏳ Planificado | 0/26 (0%) | - | - | Search Team |
+| **FASE 4: Backoffice Marketplace** | ⏳ Planificado | 0/26 (0%) | - | - | Frontend Team |
+| **FASE 5: Analytics** | ⏳ Planificado | 0/18 (0%) | - | - | Analytics Team |
+| **FASE 6: Testing** | ⏳ Planificado | 0/12 (0%) | - | - | QA Team |
+| **FASE 7: Lanzamiento** | ⏳ Planificado | 0/8 (0%) | - | - | DevOps Team |
+
+**Estados**: ⏳ Planificado | 🟡 En Progreso | ✅ Completado | ❌ Bloqueado | ⏸️ Pausado
+
+---
+
+## 📋 DETALLE DE TAREAS POR ÉPICA
+
+### 🏛️ FASE 1: TAXONOMÍA MARKETPLACE GLOBAL
+**Duración**: 4 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/32 (0%)
+
+#### 1.1 Arquitectura de Datos (8 tareas)
+- [ ] Migración `marketplace_categories` 
+- [ ] Migración `marketplace_attributes`
+- [ ] Migración `tenant_category_mappings`
+- [ ] Migración `tenant_attribute_extensions`
+- [ ] Migración `tenant_custom_attributes`
+- [ ] Índices y constraints optimizados
+- [ ] Triggers para auditoría
+- [ ] Seeders con datos iniciales
+
+#### 1.2 Entidades de Dominio (8 tareas)
+- [ ] `marketplace_category.go`
+- [ ] `marketplace_attribute.go`
+- [ ] `tenant_mapping.go`
+- [ ] `tenant_extension.go`
+- [ ] `category_tree.go`
+- [ ] `attribute_value.go`
+- [ ] Validaciones de negocio
+- [ ] Tests unitarios entidades
+
+#### 1.3 Casos de Uso (8 tareas)
+- [ ] `create_marketplace_category.go`
+- [ ] `map_tenant_category.go`
+- [ ] `extend_tenant_attributes.go`
+- [ ] `validate_category_hierarchy.go`
+- [ ] `sync_marketplace_changes.go`
+- [ ] `get_tenant_taxonomy.go`
+- [ ] Tests casos de uso
+- [ ] Documentación APIs
+
+#### 1.4 APIs y Frontend (8 tareas)
+- [ ] Handlers REST taxonomía
+- [ ] Cliente API frontend
+- [ ] Componente CategoryTree
+- [ ] Componente AttributeManager
+- [ ] Formulario mapeo categorías
+- [ ] Validaciones frontend
+- [ ] Tests E2E taxonomía
+- [ ] Documentación usuario
+
+### 🧠 FASE 2: ONBOARDING INTELIGENTE
+**Duración**: 2 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/23 (0%)
+
+#### 2.0 Migración Quickstart a BD (6 tareas)
+- [ ] **AI-TODO** Migración `business_types` desde YAML a BD
+- [ ] **AI-TODO** Migración `quickstart_templates` con categorías/atributos
+- [ ] **AI-TODO** Refactoring `quickstart_service.go` para usar BD
+- [ ] **AI-TODO** Admin panel: gestión de tipos de negocio
+- [ ] **AI-TODO** Admin panel: editor de templates quickstart
+- [ ] **AI-TODO** Migración automática datos YAML existentes
+
+#### 2.1 Sistema Configuración Tenant (8 tareas)
+- [ ] Entidades onboarding (`business_type.go`, `onboarding_state.go`)
+- [ ] Repositorios persistencia
+- [ ] Casos de uso wizard
+- [ ] Handlers HTTP onboarding
+- [ ] Componente OnboardingWizard
+- [ ] Pasos del wizard (5 componentes)
+- [ ] Migración estado onboarding
+- [ ] Tests E2E onboarding
+
+#### 2.2 Motor de Recomendaciones (5 tareas)
+- [ ] `recommendation_engine.go`
+- [ ] `postgres_recommendation_engine.go`
+- [ ] Configuraciones por tipo de negocio
+- [ ] Aplicador de configuraciones
+- [ ] Tests motor recomendaciones
+
+#### 2.3 API Configuración (4 tareas)
+- [ ] 8 endpoints onboarding
+- [ ] Validaciones configuración
+- [ ] Preview configuración
+- [ ] Documentación API
+
+### 🔍 FASE 3: MOTOR DE BÚSQUEDA HÍBRIDO  
+**Duración**: 3 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/26 (0%)
+
+#### 3.1 Motor Búsqueda Textual (8 tareas)
+- [ ] `search_document.go`
+- [ ] ElasticSearch repository
+- [ ] Indexador productos
+- [ ] Query builder inteligente
+- [ ] Handler búsquedas
+- [ ] Sistema autocompletado
+- [ ] Cache sugerencias
+- [ ] 6 endpoints búsqueda
+
+#### 3.2 Sistema Facetas Dinámicas (8 tareas)
+- [ ] Generador de facetas
+- [ ] Agregador ElasticSearch
+- [ ] Componente SearchFacets
+- [ ] 4 componentes facetas UI
+- [ ] Lógica filtros múltiples
+- [ ] Performance facetas
+- [ ] Tests facetas
+- [ ] UX facetas mobile
+
+#### 3.3 Búsqueda Avanzada (6 tareas)
+- [ ] Constructor queries complejas
+- [ ] Página AdvancedSearch
+- [ ] 3 componentes builder
+- [ ] Búsquedas guardadas
+- [ ] Migración saved_searches
+- [ ] Tests búsqueda avanzada
+
+#### 3.4 APIs Públicas (4 tareas)
+- [ ] 4 endpoints públicos marketplace
+- [ ] Autenticación sin token
+- [ ] Rate limiting público
+- [ ] Documentación API pública
+
+### 🎨 FASE 4: BACKOFFICE MARKETPLACE
+**Duración**: 3 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/26 (0%)
+
+#### 4.0 Admin Quickstart Dinámico (5 tareas)
+- [ ] **AI-TODO** Página: BusinessTypesAdmin (CRUD tipos negocio)
+- [ ] **AI-TODO** Página: QuickstartTemplatesAdmin (editor templates)
+- [ ] **AI-TODO** Componente: BusinessTypeEditor con wizard steps
+- [ ] **AI-TODO** Componente: TemplatePreview con simulación
+- [ ] **AI-TODO** API endpoints: admin quickstart CRUD
+
+#### 4.1 Panel Tenant (11 tareas)
+- [ ] TenantDashboard principal
+- [ ] 4 componentes dashboard
+- [ ] TenantCategoriesConfig
+- [ ] 3 componentes categorías
+- [ ] CreateProductMarketplace
+- [ ] 5 componentes producto
+- [ ] Integración APIs
+
+#### 4.2 Panel Admin Global (10 tareas)
+- [ ] MarketplaceTaxonomy
+- [ ] 4 componentes admin
+- [ ] MarketplaceAnalytics
+- [ ] 3 componentes analytics
+- [ ] Gestión taxonomía global
+- [ ] Analytics agregados
+
+### 📊 FASE 5: ANALYTICS Y OPTIMIZACIÓN
+**Duración**: 2 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/18 (0%)
+
+#### 5.1 Analytics para Sellers (10 tareas)
+- [ ] `tenant_analytics.go` entidades
+- [ ] 3 casos de uso analytics
+- [ ] 6 endpoints analytics
+- [ ] TenantAnalyticsDashboard
+- [ ] 6 componentes analytics UI
+- [ ] Métricas performance
+- [ ] Tests analytics
+
+#### 5.2 Recomendaciones Inteligentes (8 tareas)
+- [ ] `recommendation_engine.go`
+- [ ] Analizador competencia
+- [ ] Market intelligence
+- [ ] Casos de uso optimización
+- [ ] Migración analytics tables
+- [ ] Data pipeline
+- [ ] Tests recomendaciones
+- [ ] Documentación analytics
+
+### 🧪 FASE 6: TESTING Y VALIDACIÓN
+**Duración**: 2 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/12 (0%)
+
+#### 6.1 Testing Funcional (6 tareas)
+- [ ] Test suite onboarding
+- [ ] Test suite productos
+- [ ] Test suite búsqueda
+- [ ] Test suite performance
+- [ ] Test suite cross-tenant
+- [ ] Test suite analytics
+
+#### 6.2 User Acceptance Testing (6 tareas)
+- [ ] Scripts testing usuarios
+- [ ] Framework métricas UX
+- [ ] Testing automatizado UX
+- [ ] Validación con sellers reales
+- [ ] Métricas satisfacción
+- [ ] Reportes UAT
+
+### 🚀 FASE 7: LANZAMIENTO Y MONITOREO
+**Duración**: 1 semana | **Estado**: ⏳ Planificado | **Progreso**: 0/8 (0%)
+
+#### 7.1 Deployment (4 tareas)
+- [ ] Pipeline deployment
+- [ ] Scripts verificación
+- [ ] Configuración K8s
+- [ ] Monitoreo alertas
+
+#### 7.2 Beta Testing (4 tareas)
+- [ ] Programa beta sellers
+- [ ] Sistema feedback
+- [ ] Métricas éxito beta
+- [ ] Documentación beta
+
+---
+
+## 📅 CRONOGRAMA SEMANAL
+
+### Semanas 1-4: FASE 1 - Taxonomía Global
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S1 | Migraciones + Entidades | 8 migraciones, entidades core |
+| S2 | Casos de uso + Repos | Lógica de negocio completa |
+| S3 | APIs + Handlers | Endpoints funcionando |
+| S4 | Frontend + Tests | UI completa + tests E2E |
+
+### Semanas 5-6: FASE 2 - Onboarding  
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S5 | Backend onboarding | Motor recomendaciones + APIs |
+| S6 | Frontend wizard | Wizard completo + tests |
+
+### Semanas 7-9: FASE 3 - Motor Búsqueda
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S7 | ElasticSearch + Indexing | Motor búsqueda básico |
+| S8 | Facetas + Filtros | Sistema facetas completo |
+| S9 | Búsqueda avanzada + APIs | Funcionalidad completa |
+
+### Semanas 10-12: FASE 4 - Backoffice
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S10 | Dashboard tenant | Panel seller funcional |
+| S11 | Formularios marketplace | CRUD productos híbrido |
+| S12 | Panel admin | Gestión global taxonomía |
+
+### Semanas 13-14: FASE 5 - Analytics
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S13 | Backend analytics | Métricas + recomendaciones |
+| S14 | Frontend dashboard | UI analytics completa |
+
+### Semanas 15-16: FASE 6 - Testing
+| Semana | Enfoque | Entregables Clave |
+|--------|---------|-------------------|
+| S15 | Tests automatizados | Suite completa tests |
+| S16 | UAT con usuarios | Validación real usuarios |
+
+### Semana 17: FASE 7 - Lanzamiento
+| Día | Actividad | Entregable |
+|-----|-----------|------------|
+| L-M | Deploy producción | Sistema en vivo |
+| M-J | Beta 5 sellers | Feedback inicial |
+| V | Evaluación métricas | Decisión siguiente fase |
+
+---
+
+## ⚠️ RIESGOS Y DEPENDENCIAS
+
+### 🔴 Riesgos Altos
+- **Performance ElasticSearch**: Puede requerir optimización adicional
+- **Adopción usuario**: Onboarding debe ser realmente <10min
+- **Escalabilidad cross-tenant**: Queries pueden volverse lentas
+
+### 🟡 Riesgos Medios  
+- **Integración datos existentes**: Migración productos actuales
+- **UX complejidad**: Balance flexibilidad vs simplicidad
+- **Testing real**: Conseguir sellers beta comprometidos
+
+### 🔗 Dependencias Críticas
+- **ElasticSearch cluster**: Debe estar configurado antes S7
+- **Datos demo**: Necesarios para testing desde S1
+- **Sellers beta**: Identificar y contactar antes S15
+
+---
+
+## 📊 MÉTRICAS DE ÉXITO
+
+### 🎯 Métricas Técnicas
+- **Cobertura tests**: >90%
+- **Performance búsqueda**: <500ms p95
+- **Uptime**: >99.5%
+- **Error rate**: <0.1%
+
+### 🎯 Métricas Producto
+- **Onboarding completion**: >85%
+- **Time to first product**: <15min
+- **User satisfaction (NPS)**: >50
+- **Feature adoption**: >70%
+
+### 🎯 Métricas Negocio
+- **Beta retention**: >80%
+- **Support tickets**: <2 por seller
+- **Referral rate**: >30%
+- **ROI configuración**: 70% reducción tiempo
+
+---
+
+## 🔄 PROCESO DE ACTUALIZACIÓN
+
+### Frecuencia
+- **Daily**: Actualizar tareas individuales
+- **Semanal**: Review épicas y blockers
+- **Bi-semanal**: Métricas y cronograma
+
+### Responsables
+- **Tech Lead**: Métricas técnicas
+- **Product Manager**: Métricas producto  
+- **Project Manager**: Cronograma y riesgos
+
+### Template Actualización Semanal
+```
+## Update [FECHA]
+
+### ✅ Completado esta semana
+- [ ] Tarea 1
+- [ ] Tarea 2
+
+### 🟡 En progreso  
+- [ ] Tarea 3 (50% - bloqueado por X)
+
+### 🔄 Próxima semana
+- [ ] Tarea 4
+- [ ] Tarea 5
+
+### 🚨 Blockers/Issues
+- Issue 1: Descripción y plan resolución
+
+### 📊 Métricas clave
+- Métrica 1: Valor actual
+- Métrica 2: Valor actual
+```
+
+---
+
+*Última actualización: [FECHA]*  
+*Próxima review: [FECHA]* 

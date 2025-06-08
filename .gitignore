@@ -1,0 +1,41 @@
+# Archivos temporales
+.DS_Store
+Thumbs.db
+
+# Archivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Archivos de respaldo
+*.bak
+*.backup
+*.old
+
+# Archivos temporales de markdown
+*.md.tmp
+*.md.backup
+
+# Node modules si se usa algún tooling
+node_modules/
+package-lock.json
+
+# Python cache si se usan scripts
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de configuración local
+.env
+.env.local
+
+# Directorios de build
+dist/
+build/
+out/ 
