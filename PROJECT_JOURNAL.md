@@ -117,10 +117,50 @@ business_types (BD) -> quickstart_templates (BD) -> tenant_configurations (runti
 
 ---
 
+### 📝 [2024-12-08] - Validación de Consistencia y Corrección de Diseño
+
+#### ✅ Lo que se hizo:
+- Análisis profundo de servicios existentes vs propuesta marketplace
+- Identificación de inconsistencia CRÍTICA: `product_marketplace_attributes` vs `variant_marketplace_attributes`
+- Corrección completa del diseño en documentación
+- Validación de compatibilidad total con código existente
+- Creación de documento de validación de consistencia
+
+#### 🧠 Decisiones tomadas:
+- **❌ ERROR CORREGIDO**: Los atributos marketplace van en VARIANTES, no productos
+- **✅ DISEÑO CORRECTO**: `variant_marketplace_attributes` conecta a `product_variants`
+- **Justificación**: Sistema actual maneja atributos (talle, color) en variantes, búsquedas por variantes con stock
+- **Compatibilidad**: Zero breaking changes, solo extensiones
+
+#### 🎯 Impacto de la corrección:
+- **Base de datos**: Tabla corregida de productos → variantes
+- **Búsquedas**: Filtros por variantes específicas (con stock real)
+- **Performance**: Mejor indexación por variantes activas
+- **UX**: Filtros muestran solo opciones disponibles
+
+#### 📋 Acciones realizadas:
+- [x] Actualizado `MARKETPLACE_MULTI_TENANT_ROADMAP.md` con diseño correcto
+- [x] Creado `DATABASE_SCHEMA_EXPLAINED.md` con explicación detallada
+- [x] Creado `CONSISTENCY_VALIDATION.md` con análisis completo
+- [x] Agregada advertencia prominente sobre corrección aplicada
+
+#### ✅ Validación de servicios existentes:
+- **PIM Service**: ✅ Compatible (solo extensiones)
+- **IAM Service**: ✅ Sin cambios necesarios  
+- **Backoffice**: ✅ Extensible sin breaking changes
+- **Kong/Gateway**: ✅ Nuevos endpoints agregados
+- **Quickstart**: ✅ Compatible y potenciado
+
+#### 💡 Insights importantes:
+- El análisis de código existente previno un error arquitectural mayor
+- La estructura actual de variantes es más sólida de lo que pensamos inicialmente
+- Plan de migración incremental permite adopción gradual sin riesgo
+- Documentación técnica debe validarse contra código real siempre
+
 ### 📝 [FECHA] - Setup de Tracking y Monitoreo
 
 #### ✅ Lo que se hizo:
-- Implementación de sistema de tracking con 134 tareas específicas
+- Implementación de sistema de tracking con 145 tareas específicas
 - Definición de métricas de avance por épica
 - Establecimiento de proceso de updates semanales
 - Identificación de riesgos y dependencias críticas

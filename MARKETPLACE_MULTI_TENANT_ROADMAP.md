@@ -9,8 +9,20 @@
 - 📋 [**PROJECT_TRACKING.md**](./PROJECT_TRACKING.md) - Seguimiento épicas y tareas
 - 📝 [**PROJECT_JOURNAL.md**](./PROJECT_JOURNAL.md) - Bitácora del proyecto  
 - 🚀 [**QUICKSTART_MIGRATION_SPEC.md**](./QUICKSTART_MIGRATION_SPEC.md) - **NUEVO**: Migración quickstart YAML → BD
+- 🔧 [**DATABASE_SCHEMA_EXPLAINED.md**](./DATABASE_SCHEMA_EXPLAINED.md) - **NUEVO**: Explicación detallada del diseño híbrido
 - 📊 [Análisis Servicios Kong](../api-gateway/kong.yml)
 - 🔗 [Especificaciones OpenAPI](../combined-services-postman-collection.json)
+
+## ⚠️ CORRECCIÓN IMPORTANTE: ATRIBUTOS EN VARIANTES
+
+**❌ Error de diseño inicial corregido**: Inicialmente se propuso `product_marketplace_attributes` conectando atributos directamente a productos.
+
+**✅ Diseño correcto**: Los atributos van en `variant_marketplace_attributes` conectando a `product_variants`, porque:
+- En nuestro sistema actual, atributos como talle, color van en variantes
+- Las búsquedas son por variantes específicas (con stock real)
+- Los filtros deben mostrar solo opciones disponibles
+
+**Ver**: [DATABASE_SCHEMA_EXPLAINED.md](./DATABASE_SCHEMA_EXPLAINED.md) para detalles completos.
 
 ## 🎯 OBJETIVOS Y JUSTIFICACIÓN
 
@@ -349,10 +361,11 @@ Resultado: Filtro "Talle" funciona para todos, pero cada uno tiene lo que necesi
   ADD COLUMN marketplace_category_id UUID REFERENCES marketplace_categories(id),
   ADD COLUMN marketplace_attributes JSONB DEFAULT '{}'; -- Cache de atributos marketplace para performance
 
-  -- Tabla para valores de atributos híbridos (marketplace + tenant custom)
-  CREATE TABLE product_marketplace_attributes (
+  -- Tabla para valores de atributos híbridos en VARIANTES (marketplace + tenant custom)
+  -- CORRECCIÓN: Los atributos van en variantes, no en productos directamente
+  CREATE TABLE variant_marketplace_attributes (
       id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      product_id UUID NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+      variant_id UUID NOT NULL REFERENCES product_variants(id) ON DELETE CASCADE,
       marketplace_attribute_id UUID REFERENCES marketplace_attributes(id) ON DELETE CASCADE,
       tenant_custom_attribute_id UUID REFERENCES tenant_custom_attributes(id) ON DELETE CASCADE,
       value_text TEXT,
@@ -361,15 +374,15 @@ Resultado: Filtro "Talle" funciona para todos, pero cada uno tiene lo que necesi
       value_json JSONB,
       created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
       -- Constraint: debe ser marketplace O custom, no ambos
-      CONSTRAINT product_marketplace_attributes_single_type CHECK (
+      CONSTRAINT variant_marketplace_attributes_single_type CHECK (
           (marketplace_attribute_id IS NOT NULL AND tenant_custom_attribute_id IS NULL) OR
           (marketplace_attribute_id IS NULL AND tenant_custom_attribute_id IS NOT NULL)
       )
   );
 
-  CREATE INDEX IF NOT EXISTS idx_product_marketplace_attributes_product ON product_marketplace_attributes(product_id);
-  CREATE INDEX IF NOT EXISTS idx_product_marketplace_attributes_marketplace_attr ON product_marketplace_attributes(marketplace_attribute_id);
-  CREATE INDEX IF NOT EXISTS idx_product_marketplace_attributes_custom_attr ON product_marketplace_attributes(tenant_custom_attribute_id);
+  CREATE INDEX IF NOT EXISTS idx_variant_marketplace_attributes_variant ON variant_marketplace_attributes(variant_id);
+  CREATE INDEX IF NOT EXISTS idx_variant_marketplace_attributes_marketplace_attr ON variant_marketplace_attributes(marketplace_attribute_id);
+  CREATE INDEX IF NOT EXISTS idx_variant_marketplace_attributes_custom_attr ON variant_marketplace_attributes(tenant_custom_attribute_id);
   
   -- Índice para búsquedas por atributos marketplace
   CREATE INDEX IF NOT EXISTS idx_products_marketplace_category ON products(marketplace_category_id) WHERE marketplace_category_id IS NOT NULL;
