@@ -184,6 +184,142 @@ business_types (BD) -> quickstart_templates (BD) -> tenant_configurations (runti
 
 ---
 
+### 📝 [2024-12-12] - Creación de Repositorios Frontend Base
+
+#### ✅ Lo que se hizo:
+- Creación completa de `saas-mt-marketplace-admin` (puerto 3002)
+- Creación completa de `saas-mt-marketplace-frontend` (puerto 3003)
+- Reutilización de estilos y componentes del backoffice existente
+- Implementación de dashboards base para ambos proyectos
+- Configuración de dependencias y estructura base
+
+#### 🧠 Decisiones tomadas:
+- **Consistencia visual**: Reutilizar exactamente los estilos de TiendaVecina del backoffice
+- **Puertos diferenciados**: Admin 3002, Frontend público 3003, Backoffice 3001
+- **Estructura modular**: Componentes UI copiados para independencia de desarrollo
+- **Design system unificado**: Misma paleta de colores y componentes base
+
+---
+
+### 📝 [2024-12-09] - Integración Docker y Despliegue Completo
+
+#### ✅ Lo que se hizo:
+- Configuración completa de Docker para ambos servicios marketplace
+- Resolución de conflictos de puertos (Grafana en 3002 → Admin en 3004, Frontend en 3005)
+- Creación de Dockerfiles optimizados con multi-stage builds
+- Configuración de Next.js standalone output para producción
+- Integración exitosa en docker-compose.yml
+- Documentación completa de puertos y servicios
+
+#### 🧠 Decisiones tomadas:
+- **Puertos finales**: Admin 3004, Frontend 3005 (evitando conflicto con Grafana 3002)
+- **Build strategy**: Multi-stage Docker builds para optimización
+- **Configuración**: PostCSS y Tailwind CSS v3 (no v4) para compatibilidad
+- **Dependencias**: Ambos servicios dependen del API Gateway
+- **Documentación**: Archivo `DOCKER_SERVICES_PORTS.md` para referencia
+
+#### 🎯 Logros técnicos:
+- ✅ **Builds exitosos**: Ambos servicios compilan sin errores
+- ✅ **Docker funcional**: Contenedores ejecutándose correctamente
+- ✅ **Servicios respondiendo**: HTTP 200 en ambos puertos
+- ✅ **Stack completo**: 17 servicios corriendo simultáneamente
+- ✅ **Documentación**: Guía completa de puertos y comandos
+
+#### 📋 Archivos creados/modificados:
+- `services/saas-mt-marketplace-admin/Dockerfile`
+- `services/saas-mt-marketplace-admin/.dockerignore`
+- `services/saas-mt-marketplace-admin/postcss.config.js`
+- `services/saas-mt-marketplace-frontend/Dockerfile`
+- `services/saas-mt-marketplace-frontend/.dockerignore`
+- `services/saas-mt-marketplace-frontend/postcss.config.js`
+- `docker-compose.yml` (servicios agregados)
+- `DOCKER_SERVICES_PORTS.md` (documentación nueva)
+
+#### 🔧 Problemas resueltos:
+- **Conflicto puertos**: Grafana ocupaba 3002 → Cambio a 3004/3005
+- **Tailwind v4 syntax**: `@import "tailwindcss"` → `@tailwind` directives
+- **Package lock sync**: Regeneración de package-lock.json
+- **PostCSS missing**: Configuración de postcss.config.js
+- **Autoprefixer**: Instalación de dependencia faltante
+
+#### 🌐 URLs de acceso:
+- **Backoffice**: http://localhost:3000
+- **Marketplace Admin**: http://localhost:3004
+- **Marketplace Frontend**: http://localhost:3005
+- **Grafana**: http://localhost:3002
+- **API Gateway**: http://localhost:8001
+
+#### 📊 Estado del proyecto:
+- **Archivos implementados**: 15/96+ (16%)
+- **Servicios frontend**: 3/3 funcionando
+- **Infraestructura**: Docker stack completo
+- **Repositorios**: Migrados a organización trinityweb
+- **Próximo**: Conectar con APIs backend y comenzar FASE 1
+
+---
+
+### 📝 [2024-12-09] - Migración de Repositorios a Organización trinityweb
+
+#### ✅ Lo que se hizo:
+- Migración completa de repositorios a organización trinityweb
+- Creación de repositorios en https://github.com/orgs/trinityweb/repositories
+- Actualización de remotes locales para apuntar a trinityweb
+- Actualización de scripts multi-repositorio para incluir nuevos proyectos
+- Documentación completa de arquitectura de repositorios
+
+#### 🧠 Decisiones tomadas:
+- **Organización centralizada**: Todos los repos bajo trinityweb para mejor gestión
+- **URLs actualizadas**: Remotes locales apuntan a trinityweb
+- **Scripts actualizados**: multi-repo-manager.sh y quick-repo-status.sh incluyen nuevos repos
+- **Makefile mejorado**: Comandos para rebuild rápido de servicios marketplace
+
+#### 🎯 Repositorios migrados:
+- ✅ **saas-mt-marketplace-admin**: https://github.com/trinityweb/saas-mt-marketplace-admin
+- ✅ **saas-mt-marketplace-frontend**: https://github.com/trinityweb/saas-mt-marketplace-frontend  
+- ✅ **mcp-go-generator-node**: https://github.com/trinityweb/mcp-go-generator-node
+
+#### 📋 Archivos actualizados:
+- `scripts/multi-repo-manager.sh` - Lista de repositorios actualizada
+- `scripts/quick-repo-status.sh` - Incluye nuevos repos en status
+- `Makefile` - Comandos rebuild para marketplace services
+- `REPOSITORIES.md` - Documentación completa de arquitectura
+
+#### 🔧 Comandos agregados:
+- `make rebuild-marketplace-admin` - Rebuild rápido admin
+- `make rebuild-marketplace-frontend` - Rebuild rápido frontend
+- `make repos-status` - Estado actualizado con nuevos repos
+
+#### 📊 Estado final:
+- **14 repositorios** bajo organización trinityweb
+- **Sistema multi-repo** funcionando correctamente
+- **Documentación** completa de arquitectura
+- **Gestión centralizada** lista para desarrollo colaborativo
+
+#### 🎯 Funcionalidades implementadas:
+- **Marketplace Admin**: Dashboard con métricas, gestión de taxonomía, quickstart dinámico
+- **Marketplace Frontend**: Homepage con búsqueda, grid de productos, filtros avanzados
+- **UI Components**: Button, Card, Input, Badge y utilidades base
+- **Responsive Design**: Mobile-first con breakpoints optimizados
+
+#### 📊 Progreso del proyecto:
+- **Archivos implementados**: 8/96+ (8% completado)
+- **Estructura base**: 100% lista para desarrollo
+- **Design system**: 100% consistente con ecosystem
+
+#### 💡 Insights importantes:
+- La reutilización de componentes del backoffice acelera significativamente el desarrollo
+- Tener repositorios separados permite desarrollo paralelo sin conflictos
+- La paleta de colores TiendaVecina funciona perfecto para el marketplace público
+- Estructura base sólida facilita la implementación de las siguientes fases
+
+#### 🔗 Próximos pasos inmediatos:
+- [ ] Implementar migraciones de base de datos (FASE 1.1)
+- [ ] Crear entidades de dominio para taxonomía marketplace
+- [ ] Conectar admin panel con APIs del PIM service
+- [ ] Implementar sistema de búsqueda cross-tenant
+
+---
+
 ## 🏃‍♂️ SPRINTS Y ÉPICAS
 
 ### 🏛️ ÉPICA 1: TAXONOMÍA MARKETPLACE GLOBAL
