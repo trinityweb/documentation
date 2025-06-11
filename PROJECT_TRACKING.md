@@ -12,7 +12,7 @@
 | Métrica | Progreso | Target |
 |---------|----------|--------|
 | **Épicas Completadas** | 0/7 (0%) | 7/7 (100%) |
-| **Tareas Completadas** | 13/145 (9%) | 145/145 (100%) |
+| **Tareas Completadas** | 13/149 (9%) | 149/149 (100%) |
 | **Archivos Implementados** | 15/96+ (16%) | 96+/96+ (100%) |
 | **Migraciones Aplicadas** | 0/18 (0%) | 18/18 (100%) |
 | **Documentación Validada** | ✅ 100% | 100% (✅ Correcciones aplicadas) |
@@ -27,7 +27,7 @@
 | Épica | Estado | Progreso | Inicio | Fin | Responsable |
 |-------|--------|----------|--------|-----|-------------|
 | **VALIDACIÓN: Consistencia** | ✅ Completado | 5/5 (100%) | 2024-12-08 | 2024-12-08 | Tech Lead |
-| **FASE 1: Taxonomía Global** | 🟡 En Progreso | 13/32 (41%) | 2025-06-09 | - | Backend Team |
+| **FASE 1: Taxonomía Global** | 🟡 En Progreso | 13/36 (36%) | 2025-06-09 | - | Backend Team |
 | **FASE 2: Onboarding Inteligente** | ⏳ Planificado | 0/23 (0%) | - | - | Full Stack Team |
 | **FASE 3: Motor de Búsqueda** | ⏳ Planificado | 0/26 (0%) | - | - | Search Team |
 | **FASE 4: Backoffice Marketplace** | ⏳ Planificado | 0/26 (0%) | - | - | Frontend Team |
@@ -100,15 +100,25 @@
 - [ ] Tests casos de uso
 - [ ] Documentación APIs
 
-#### 1.4 APIs y Frontend (8 tareas)
-- [ ] Handlers REST taxonomía
-- [ ] Cliente API frontend
+#### 1.4 Infraestructura y APIs (12 tareas)
+
+**1.4.1 Repositorios PostgreSQL (4 tareas)**
+- [ ] `MarketplaceCategoryPostgresRepository` - CRUD categorías marketplace
+- [ ] `TenantCategoryMappingPostgresRepository` - CRUD mapeos tenant
+- [ ] `TenantCustomAttributePostgresRepository` - CRUD atributos custom
+- [ ] Tests unitarios repositorios
+
+**1.4.2 Controladores HTTP (4 tareas)**
+- [ ] `MarketplaceCategoryController` - Endpoints categorías marketplace
+- [ ] `TenantCategoryMappingController` - Endpoints mapeos tenant
+- [ ] `TenantCustomAttributeController` - Endpoints atributos custom
+- [ ] Middleware validación y autorización
+
+**1.4.3 Frontend y Integración (4 tareas)**
+- [ ] Cliente API frontend marketplace
 - [ ] Componente CategoryTree
 - [ ] Componente AttributeManager
-- [ ] Formulario mapeo categorías
-- [ ] Validaciones frontend
-- [ ] Tests E2E taxonomía
-- [ ] Documentación usuario
+- [ ] Tests E2E taxonomía completa
 
 ### 🧠 FASE 2: ONBOARDING INTELIGENTE
 **Duración**: 2 semanas | **Estado**: ⏳ Planificado | **Progreso**: 0/23 (0%)
