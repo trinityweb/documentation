@@ -12,7 +12,7 @@
 | Métrica | Progreso | Target |
 |---------|----------|--------|
 | **Épicas Completadas** | 0/7 (0%) | 7/7 (100%) |
-| **Tareas Completadas** | 10/145 (7%) | 145/145 (100%) |
+| **Tareas Completadas** | 13/145 (9%) | 145/145 (100%) |
 | **Archivos Implementados** | 15/96+ (16%) | 96+/96+ (100%) |
 | **Migraciones Aplicadas** | 0/18 (0%) | 18/18 (100%) |
 | **Documentación Validada** | ✅ 100% | 100% (✅ Correcciones aplicadas) |
@@ -27,7 +27,7 @@
 | Épica | Estado | Progreso | Inicio | Fin | Responsable |
 |-------|--------|----------|--------|-----|-------------|
 | **VALIDACIÓN: Consistencia** | ✅ Completado | 5/5 (100%) | 2024-12-08 | 2024-12-08 | Tech Lead |
-| **FASE 1: Taxonomía Global** | 🟡 En Progreso | 10/32 (31%) | 2025-06-09 | - | Backend Team |
+| **FASE 1: Taxonomía Global** | 🟡 En Progreso | 13/32 (41%) | 2025-06-09 | - | Backend Team |
 | **FASE 2: Onboarding Inteligente** | ⏳ Planificado | 0/23 (0%) | - | - | Full Stack Team |
 | **FASE 3: Motor de Búsqueda** | ⏳ Planificado | 0/26 (0%) | - | - | Search Team |
 | **FASE 4: Backoffice Marketplace** | ⏳ Planificado | 0/26 (0%) | - | - | Frontend Team |
@@ -83,17 +83,17 @@
 #### 1.2 Entidades de Dominio (8 tareas)
 - [x] `marketplace_category.go` ✅ 2025-06-09
 - [x] `marketplace_attribute.go` ✅ 2025-06-09
-- [ ] `tenant_mapping.go`
-- [ ] `tenant_extension.go`
-- [ ] `category_tree.go`
-- [ ] `attribute_value.go`
-- [ ] Validaciones de negocio
-- [ ] Tests unitarios entidades
+- [x] `tenant_mapping.go` (tenant_category_mapping.go) ✅ 2025-06-09
+- [x] `tenant_extension.go` (tenant_attribute_extension.go) ✅ 2025-06-09
+- [x] `category_tree.go` ✅ 2025-06-11
+- [x] `attribute_value.go` ✅ 2025-06-11
+- [x] Validaciones de negocio (marketplace_validator.go) ✅ 2025-06-11
+- [x] Tests unitarios entidades ✅ 2025-06-11
 
 #### 1.3 Casos de Uso (8 tareas)
-- [ ] `create_marketplace_category.go`
-- [ ] `map_tenant_category.go`
-- [ ] `extend_tenant_attributes.go`
+- [x] `create_marketplace_category.go` ✅ 2025-06-11
+- [x] `map_tenant_category.go` ✅ 2025-06-11
+- [x] `extend_tenant_attributes.go` ✅ 2025-06-11
 - [ ] `validate_category_hierarchy.go`
 - [ ] `sync_marketplace_changes.go`
 - [ ] `get_tenant_taxonomy.go`
